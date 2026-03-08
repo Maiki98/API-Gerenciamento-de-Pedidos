@@ -11,7 +11,7 @@ export function OrderDetails() {
     return (
       <div className="flex flex-col items-center justify-center py-32 text-muted-foreground">
         <Loader2 className="w-8 h-8 animate-spin mb-4 text-primary" />
-        <p>Loading order details...</p>
+        <p>Carregando detalhes do pedido...</p>
       </div>
     );
   }
@@ -19,10 +19,10 @@ export function OrderDetails() {
   if (error || !order) {
     return (
       <div className="max-w-2xl mx-auto text-center py-20">
-        <h2 className="text-2xl font-bold mb-4">Order not found</h2>
-        <p className="text-muted-foreground mb-8">The order you're looking for doesn't exist or has been deleted.</p>
+        <h2 className="text-2xl font-bold mb-4">Pedido não encontrado</h2>
+        <p className="text-muted-foreground mb-8">O pedido que você está procurando não existe ou foi deletado.</p>
         <Link href="/">
-          <span className="text-primary hover:underline font-medium cursor-pointer">Return to Dashboard</span>
+          <span className="text-primary hover:underline font-medium cursor-pointer">Voltar para o Dashboard</span>
         </Link>
       </div>
     );
@@ -36,39 +36,39 @@ export function OrderDetails() {
     <div className="max-w-4xl mx-auto">
       <Link href="/" className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground mb-8 transition-colors cursor-pointer">
         <ArrowLeft className="w-4 h-4" />
-        Back to Orders
+        Voltar para Pedidos
       </Link>
 
       <div className="bg-white rounded-3xl overflow-hidden border border-border/60 shadow-xl shadow-black/5">
         
-        {/* Header Header */}
+        {/* Cabeçalho */}
         <div className="bg-zinc-50 border-b border-border/60 px-8 py-10">
           <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6">
             <div>
               <div className="flex items-center gap-2 text-muted-foreground mb-2">
                 <FileText className="w-4 h-4" />
-                <span className="text-sm font-semibold tracking-wider uppercase">Order Invoice</span>
+                <span className="text-sm font-semibold tracking-wider uppercase">Nota Fiscal</span>
               </div>
               <h1 className="text-3xl sm:text-4xl font-display font-bold text-foreground">
                 {order.orderId}
               </h1>
             </div>
             <div className="text-left sm:text-right">
-              <p className="text-sm text-muted-foreground mb-1">Total Amount</p>
+              <p className="text-sm text-muted-foreground mb-1">Valor Total</p>
               <p className="text-3xl font-bold text-primary">{formatCurrency(order.value)}</p>
             </div>
           </div>
         </div>
 
-        {/* Order Meta */}
+        {/* Informações do Pedido */}
         <div className="px-8 py-6 border-b border-border/40 flex flex-wrap gap-12 bg-white">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-primary/5 flex items-center justify-center text-primary">
               <Calendar className="w-5 h-5" />
             </div>
             <div>
-              <p className="text-xs text-muted-foreground font-medium mb-0.5">Date</p>
-              <p className="font-medium text-sm">{format(new Date(order.creationDate), "MMMM dd, yyyy 'at' h:mm a")}</p>
+              <p className="text-xs text-muted-foreground font-medium mb-0.5">Data</p>
+              <p className="font-medium text-sm">{format(new Date(order.creationDate), "dd 'de' MMMM 'de' yyyy", { locale: require('date-fns/locale/pt-BR').default })}</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
@@ -76,28 +76,28 @@ export function OrderDetails() {
               <Package className="w-5 h-5" />
             </div>
             <div>
-              <p className="text-xs text-muted-foreground font-medium mb-0.5">Items</p>
-              <p className="font-medium text-sm">{order.items?.length || 0} product(s)</p>
+              <p className="text-xs text-muted-foreground font-medium mb-0.5">Itens</p>
+              <p className="font-medium text-sm">{order.items?.length || 0} produto(s)</p>
             </div>
           </div>
         </div>
 
-        {/* Line Items */}
+        {/* Itens da Nota */}
         <div className="p-8">
-          <h3 className="font-semibold text-lg mb-6">Line Items</h3>
+          <h3 className="font-semibold text-lg mb-6">Itens</h3>
           
           {(!order.items || order.items.length === 0) ? (
             <div className="text-center py-12 bg-zinc-50 rounded-2xl border border-dashed">
-              <p className="text-muted-foreground">No items recorded for this order.</p>
+              <p className="text-muted-foreground">Nenhum item registrado para este pedido.</p>
             </div>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="border-b-2 border-border/60">
-                    <th className="pb-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">Product ID</th>
-                    <th className="pb-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider text-right">Unit Price</th>
-                    <th className="pb-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider text-right">Quantity</th>
+                    <th className="pb-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider">ID Produto</th>
+                    <th className="pb-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider text-right">Preço Unit.</th>
+                    <th className="pb-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider text-right">Quantidade</th>
                     <th className="pb-4 text-xs font-semibold text-muted-foreground uppercase tracking-wider text-right">Total</th>
                   </tr>
                 </thead>
@@ -124,13 +124,13 @@ export function OrderDetails() {
           )}
         </div>
         
-        {/* Action Footer */}
+        {/* Rodapé com Ações */}
         <div className="bg-zinc-50 px-8 py-6 border-t border-border flex justify-end">
           <Link 
             href={`/orders/${order.orderId}/edit`}
             className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl font-medium bg-white border border-border shadow-sm hover:shadow-md hover:bg-zinc-50 transition-all"
           >
-            Edit Order
+            Editar Pedido
           </Link>
         </div>
       </div>

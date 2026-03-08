@@ -79,32 +79,32 @@ export function OrderForm() {
     <div className="max-w-4xl mx-auto">
       <Link href="/" className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground mb-8 transition-colors">
         <ArrowLeft className="w-4 h-4" />
-        Back to Orders
+        Voltar para Pedidos
       </Link>
 
       <div className="bg-white rounded-3xl p-6 sm:p-10 border border-border/60 shadow-xl shadow-black/5">
         <div className="mb-8">
           <h1 className="text-3xl font-bold font-display">
-            {isEditMode ? "Edit Order" : "Create New Order"}
+            {isEditMode ? "Editar Pedido" : "Criar Novo Pedido"}
           </h1>
           <p className="text-muted-foreground mt-2">
-            Fill out the details below. Required fields are marked with an asterisk.
+            Preencha os detalhes abaixo. Os campos obrigatórios são marcados com um asterisco.
           </p>
         </div>
 
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
-          {/* Main Details Section */}
+          {/* Seção de Informações Gerais */}
           <div className="space-y-6">
-            <h2 className="text-lg font-semibold border-b pb-2">General Information</h2>
+            <h2 className="text-lg font-semibold border-b pb-2">Informações Gerais</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               
               <div className="space-y-2">
-                <label className="text-sm font-medium text-foreground">Order ID *</label>
+                <label className="text-sm font-medium text-foreground">ID do Pedido *</label>
                 <input
                   {...form.register("numeroPedido")}
-                  disabled={isEditMode} // Usually you don't change the PK
+                  disabled={isEditMode}
                   className="w-full px-4 py-3 rounded-xl bg-zinc-50 border border-border focus-ring disabled:opacity-50"
-                  placeholder="e.g. ORD-2023-001"
+                  placeholder="ex.: ORD-2023-001"
                 />
                 {form.formState.errors.numeroPedido && (
                   <p className="text-destructive text-sm mt-1">{form.formState.errors.numeroPedido.message}</p>
@@ -112,7 +112,7 @@ export function OrderForm() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium text-foreground">Creation Date *</label>
+                <label className="text-sm font-medium text-foreground">Data de Criação *</label>
                 <input
                   type="datetime-local"
                   {...form.register("dataCriacao")}
@@ -124,9 +124,9 @@ export function OrderForm() {
               </div>
 
               <div className="space-y-2 md:col-span-2">
-                <label className="text-sm font-medium text-foreground">Total Value *</label>
+                <label className="text-sm font-medium text-foreground">Valor Total *</label>
                 <div className="relative">
-                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground font-medium">$</span>
+                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground font-medium">R$</span>
                   <input
                     type="number"
                     step="0.01"
@@ -135,7 +135,7 @@ export function OrderForm() {
                     placeholder="0.00"
                   />
                 </div>
-                <p className="text-xs text-muted-foreground">Auto-calculated from items, but can be overridden.</p>
+                <p className="text-xs text-muted-foreground">Calculado automaticamente a partir dos itens, mas pode ser substituído.</p>
                 {form.formState.errors.valorTotal && (
                   <p className="text-destructive text-sm mt-1">{form.formState.errors.valorTotal.message}</p>
                 )}
@@ -143,33 +143,33 @@ export function OrderForm() {
             </div>
           </div>
 
-          {/* Items Section */}
+          {/* Seção de Itens */}
           <div className="space-y-6">
             <div className="flex items-center justify-between border-b pb-2">
-              <h2 className="text-lg font-semibold">Order Items</h2>
+              <h2 className="text-lg font-semibold">Itens do Pedido</h2>
               <button
                 type="button"
                 onClick={() => append({ idItem: "", quantidadeItem: 1, valorItem: 0 })}
                 className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
               >
-                <Plus className="w-4 h-4" /> Add Item
+                <Plus className="w-4 h-4" /> Adicionar Item
               </button>
             </div>
 
             {fields.length === 0 ? (
               <div className="text-center py-10 bg-zinc-50 rounded-xl border border-dashed border-border">
-                <p className="text-muted-foreground text-sm">No items added yet.</p>
+                <p className="text-muted-foreground text-sm">Nenhum item adicionado ainda.</p>
               </div>
             ) : (
               <div className="space-y-4">
                 {fields.map((field, index) => (
                   <div key={field.id} className="grid grid-cols-12 gap-4 items-start bg-zinc-50 p-4 rounded-xl border border-border">
                     <div className="col-span-12 md:col-span-4 space-y-1">
-                      <label className="text-xs font-medium text-muted-foreground">Product ID</label>
+                      <label className="text-xs font-medium text-muted-foreground">ID do Produto</label>
                       <input
                         {...form.register(`items.${index}.idItem`)}
                         className="w-full px-3 py-2 text-sm rounded-lg bg-white border border-border focus-ring"
-                        placeholder="e.g. 1001"
+                        placeholder="ex.: 1001"
                       />
                       {form.formState.errors.items?.[index]?.idItem && (
                         <p className="text-destructive text-xs mt-1">{form.formState.errors.items[index]?.idItem?.message}</p>
@@ -177,7 +177,7 @@ export function OrderForm() {
                     </div>
                     
                     <div className="col-span-6 md:col-span-3 space-y-1">
-                      <label className="text-xs font-medium text-muted-foreground">Quantity</label>
+                      <label className="text-xs font-medium text-muted-foreground">Quantidade</label>
                       <input
                         type="number"
                         {...form.register(`items.${index}.quantidadeItem`, { valueAsNumber: true })}
@@ -187,9 +187,9 @@ export function OrderForm() {
                     </div>
                     
                     <div className="col-span-6 md:col-span-4 space-y-1">
-                      <label className="text-xs font-medium text-muted-foreground">Unit Price</label>
+                      <label className="text-xs font-medium text-muted-foreground">Preço Unitário</label>
                       <div className="relative">
-                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-xs">$</span>
+                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-xs">R$</span>
                         <input
                           type="number"
                           step="0.01"
@@ -220,7 +220,7 @@ export function OrderForm() {
           <div className="pt-6 border-t flex items-center justify-end gap-4">
             <Link href="/">
               <button type="button" className="px-6 py-3 font-medium text-muted-foreground hover:text-foreground transition-colors">
-                Cancel
+                Cancelar
               </button>
             </Link>
             <button
@@ -229,7 +229,7 @@ export function OrderForm() {
               className="inline-flex items-center gap-2 px-8 py-3 rounded-xl font-medium bg-primary text-primary-foreground shadow-lg shadow-primary/20 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-50 disabled:transform-none disabled:cursor-not-allowed"
             >
               {isPending ? <Loader2 className="w-5 h-5 animate-spin" /> : <Save className="w-5 h-5" />}
-              {isEditMode ? "Save Changes" : "Create Order"}
+              {isEditMode ? "Salvar Alterações" : "Criar Pedido"}
             </button>
           </div>
         </form>

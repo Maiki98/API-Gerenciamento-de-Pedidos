@@ -12,7 +12,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               <div className="bg-primary text-primary-foreground p-1.5 rounded-lg group-hover:scale-105 transition-transform duration-200">
                 <Command className="w-5 h-5" />
               </div>
-              <span className="font-display font-bold text-lg tracking-tight">OrderFlow</span>
+              <span className="font-display font-bold text-lg tracking-tight">Gerenciador de Pedidos</span>
             </Link>
             
             <nav className="flex items-center gap-4">
@@ -20,7 +20,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
                 Dashboard
               </Link>
               <Link href="/orders/new" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors cursor-pointer">
-                New Order
+                Novo Pedido
               </Link>
             </nav>
           </div>

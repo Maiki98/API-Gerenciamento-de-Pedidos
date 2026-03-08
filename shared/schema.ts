@@ -2,12 +2,14 @@ import { pgTable, text, serial, integer, timestamp } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 import { z } from "zod";
 
+// Tabela de Pedidos
 export const orders = pgTable("orders", {
   orderId: text("order_id").primaryKey(),
   value: integer("value").notNull(),
   creationDate: timestamp("creation_date").notNull(),
 });
 
+// Tabela de Itens do Pedido
 export const items = pgTable("items", {
   id: serial("id").primaryKey(),
   orderId: text("order_id").notNull(),
@@ -16,6 +18,7 @@ export const items = pgTable("items", {
   price: integer("price").notNull(),
 });
 
+// Relacionamentos entre Pedidos e Itens
 export const ordersRelations = relations(orders, ({ many }) => ({
   items: many(items),
 }));

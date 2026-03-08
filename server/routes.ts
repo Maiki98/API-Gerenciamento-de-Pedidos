@@ -8,7 +8,7 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
-  // Create a new order
+  // Criar novo pedido
   app.post(api.orders.create.path, async (req, res) => {
     try {
       const input = api.orders.create.input.parse(req.body);
@@ -21,45 +21,45 @@ export async function registerRoutes(
           field: err.errors[0].path.join('.'),
         });
       }
-      return res.status(500).json({ message: "Internal server error" });
+      return res.status(500).json({ message: "Erro no servidor interno" });
     }
   });
 
-  // List all orders
+  // Listar todos os pedidos
   app.get(api.orders.list.path, async (req, res) => {
     try {
       const orders = await storage.listOrders();
       res.status(200).json(orders);
     } catch (err) {
-      return res.status(500).json({ message: "Internal server error" });
+      return res.status(500).json({ message: "Erro no servidor interno" });
     }
   });
 
-  // Get order by id
+  // Obter pedido por ID
   app.get(api.orders.get.path, async (req, res) => {
     try {
       const order = await storage.getOrder(req.params.orderId);
       if (!order) {
-        return res.status(404).json({ message: 'Order not found' });
+        return res.status(404).json({ message: 'Pedido não encontrado' });
       }
       res.status(200).json(order);
     } catch (err) {
-      return res.status(500).json({ message: "Internal server error" });
+      return res.status(500).json({ message: "Erro no servidor interno" });
     }
   });
 
-  // Update order
+  // Atualizar pedido
   app.put(api.orders.update.path, async (req, res) => {
     try {
       const existing = await storage.getOrder(req.params.orderId);
       if (!existing) {
-        return res.status(404).json({ message: 'Order not found' });
+        return res.status(404).json({ message: 'Pedido não encontrado' });
       }
       const input = api.orders.update.input.parse(req.body);
       
-      // Ensure the orderId parameter matches the body's orderId if provided
+      // Validar que o ID do pedido na URL corresponde ao corpo da requisição
       if (input.numeroPedido !== req.params.orderId) {
-          return res.status(400).json({ message: "Order ID in body does not match URL parameter" });
+          return res.status(400).json({ message: "ID do pedido no corpo não corresponde ao parâmetro da URL" });
       }
       
       const order = await storage.updateOrder(req.params.orderId, input);
@@ -71,25 +71,25 @@ export async function registerRoutes(
           field: err.errors[0].path.join('.'),
         });
       }
-      return res.status(500).json({ message: "Internal server error" });
+      return res.status(500).json({ message: "Erro no servidor interno" });
     }
   });
 
-  // Delete order
+  // Deletar pedido
   app.delete(api.orders.delete.path, async (req, res) => {
     try {
       const existing = await storage.getOrder(req.params.orderId);
       if (!existing) {
-        return res.status(404).json({ message: 'Order not found' });
+        return res.status(404).json({ message: 'Pedido não encontrado' });
       }
       await storage.deleteOrder(req.params.orderId);
       res.status(204).send();
     } catch (err) {
-      return res.status(500).json({ message: "Internal server error" });
+      return res.status(500).json({ message: "Erro no servidor interno" });
     }
   });
 
-  // Seed data function
+  // Função para popular banco de dados com dados de exemplo
   async function seedDatabase() {
     const ordersList = await storage.listOrders();
     if (ordersList.length === 0) {
@@ -120,7 +120,7 @@ export async function registerRoutes(
     }
   }
 
-  // Run seed function on startup
+  // Executar função seed na inicialização
   seedDatabase().catch(console.error);
 
   return httpServer;

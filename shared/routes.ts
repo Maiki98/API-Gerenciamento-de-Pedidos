@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { orderInputSchema } from "./schema";
 
+// Esquemas de erro compartilhados
 export const errorSchemas = {
   validation: z.object({
     message: z.string(),
@@ -29,6 +30,7 @@ const orderResponseSchema = z.object({
   items: z.array(itemResponseSchema).optional(),
 });
 
+// Contrato de API - Define rotas, métodos e esquemas de requisição/resposta
 export const api = {
   orders: {
     create: {

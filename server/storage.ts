@@ -2,6 +2,7 @@ import { db } from "./db";
 import { eq } from "drizzle-orm";
 import { orders, items, type OrderInput, type OrderWithItems } from "@shared/schema";
 
+// Interface de armazenamento para operações CRUD de Pedidos
 export interface IStorage {
   createOrder(order: OrderInput): Promise<OrderWithItems>;
   getOrder(orderId: string): Promise<OrderWithItems | undefined>;
@@ -10,6 +11,7 @@ export interface IStorage {
   deleteOrder(orderId: string): Promise<void>;
 }
 
+// Implementação do armazenamento usando PostgreSQL
 export class DatabaseStorage implements IStorage {
   async createOrder(orderInput: OrderInput): Promise<OrderWithItems> {
     const [newOrder] = await db.insert(orders).values({

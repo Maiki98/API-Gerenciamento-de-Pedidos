@@ -53,15 +53,15 @@ export function useCreateOrder() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [api.orders.list.path] });
       toast({
-        title: "Order created",
-        description: "Your new order has been successfully created.",
+        title: "Pedido criado",
+        description: "Seu novo pedido foi criado com sucesso.",
       });
       setLocation("/");
     },
     onError: (error) => {
       toast({
         variant: "destructive",
-        title: "Creation failed",
+        title: "Falha na criação",
         description: error.message,
       });
     },
@@ -93,15 +93,15 @@ export function useUpdateOrder() {
       queryClient.invalidateQueries({ queryKey: [api.orders.list.path] });
       queryClient.invalidateQueries({ queryKey: [api.orders.get.path, data.orderId] });
       toast({
-        title: "Order updated",
-        description: "The order has been successfully updated.",
+        title: "Pedido atualizado",
+        description: "O pedido foi atualizado com sucesso.",
       });
       setLocation("/");
     },
     onError: (error) => {
       toast({
         variant: "destructive",
-        title: "Update failed",
+        title: "Falha na atualização",
         description: error.message,
       });
     },
@@ -126,15 +126,15 @@ export function useDeleteOrder() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [api.orders.list.path] });
       toast({
-        title: "Order deleted",
-        description: "The order has been permanently removed.",
+        title: "Pedido deletado",
+        description: "O pedido foi removido permanentemente.",
       });
       setLocation("/");
     },
     onError: (error) => {
       toast({
         variant: "destructive",
-        title: "Deletion failed",
+        title: "Falha na exclusão",
         description: error.message,
       });
     },

@@ -21,15 +21,15 @@ export function OrdersList() {
     <div className="space-y-8">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl sm:text-4xl font-bold">Orders</h1>
-          <p className="text-muted-foreground mt-1 text-sm sm:text-base">Manage and track your customer orders.</p>
+          <h1 className="text-3xl sm:text-4xl font-bold">Pedidos</h1>
+          <p className="text-muted-foreground mt-1 text-sm sm:text-base">Gerencie e acompanhe seus pedidos de clientes.</p>
         </div>
         <Link 
           href="/orders/new" 
           className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl font-medium shadow-lg shadow-black/5 hover:-translate-y-0.5 hover:shadow-xl transition-all duration-200"
         >
           <Plus className="w-4 h-4" />
-          Create Order
+          Novo Pedido
         </Link>
       </div>
 
@@ -37,7 +37,7 @@ export function OrdersList() {
         <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
         <input
           type="text"
-          placeholder="Search by order ID..."
+          placeholder="Pesquisar por ID do pedido..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="w-full pl-12 pr-4 py-4 rounded-2xl bg-white border border-border/60 shadow-sm focus-ring text-foreground placeholder:text-muted-foreground"
@@ -47,15 +47,15 @@ export function OrdersList() {
       {isLoading && (
         <div className="flex flex-col items-center justify-center py-20 text-muted-foreground">
           <Loader2 className="w-8 h-8 animate-spin mb-4 text-primary" />
-          <p>Loading orders...</p>
+          <p>Carregando pedidos...</p>
         </div>
       )}
 
       {error && (
         <div className="bg-destructive/10 text-destructive p-6 rounded-2xl border border-destructive/20 flex flex-col items-center text-center">
           <FileX className="w-8 h-8 mb-2 opacity-80" />
-          <p className="font-semibold">Failed to load orders</p>
-          <p className="text-sm opacity-80 mt-1">Please try refreshing the page.</p>
+          <p className="font-semibold">Falha ao carregar pedidos</p>
+          <p className="text-sm opacity-80 mt-1">Por favor, tente atualizar a página.</p>
         </div>
       )}
 
@@ -64,9 +64,9 @@ export function OrdersList() {
           <div className="w-16 h-16 bg-zinc-50 rounded-2xl flex items-center justify-center mb-4">
             <FileX className="w-8 h-8 text-zinc-400" />
           </div>
-          <h3 className="text-xl font-bold mb-2">No orders found</h3>
+          <h3 className="text-xl font-bold mb-2">Nenhum pedido encontrado</h3>
           <p className="text-muted-foreground max-w-md">
-            {searchTerm ? "No orders matched your search criteria." : "You haven't created any orders yet. Start by creating your first one."}
+            {searchTerm ? "Nenhum pedido corresponde aos seus critérios de pesquisa." : "Você ainda não criou nenhum pedido. Comece criando o seu primeiro agora."}
           </p>
         </div>
       )}
@@ -79,7 +79,7 @@ export function OrdersList() {
           >
             <div className="flex justify-between items-start mb-4">
               <div>
-                <span className="text-xs font-semibold tracking-wider text-muted-foreground uppercase mb-1 block">Order ID</span>
+                <span className="text-xs font-semibold tracking-wider text-muted-foreground uppercase mb-1 block">ID do Pedido</span>
                 <h3 className="font-display font-bold text-lg text-foreground truncate max-w-[200px]" title={order.orderId}>
                   {order.orderId}
                 </h3>
@@ -90,7 +90,7 @@ export function OrdersList() {
                 </Link>
                 <button 
                   onClick={() => {
-                    if(confirm('Are you sure you want to delete this order?')) {
+                    if(confirm('Tem certeza que deseja deletar este pedido?')) {
                       deleteOrder.mutate(order.orderId);
                     }
                   }}
@@ -104,19 +104,19 @@ export function OrdersList() {
             
             <div className="space-y-3 mb-6 flex-1">
               <div className="flex justify-between text-sm">
-                <span className="text-muted-foreground">Value</span>
+                <span className="text-muted-foreground">Valor</span>
                 <span className="font-medium text-foreground">{formatCurrency(order.value)}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-muted-foreground">Date</span>
+                <span className="text-muted-foreground">Data</span>
                 <span className="font-medium text-foreground">
-                  {format(new Date(order.creationDate), "MMM dd, yyyy")}
+                  {format(new Date(order.creationDate), "dd 'de' MMMM 'de' yyyy", { locale: require('date-fns/locale/pt-BR').default })}
                 </span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-muted-foreground">Items</span>
+                <span className="text-muted-foreground">Itens</span>
                 <span className="font-medium text-foreground">
-                  {order.items?.length || 0} product(s)
+                  {order.items?.length || 0} produto(s)
                 </span>
               </div>
             </div>
@@ -125,7 +125,7 @@ export function OrdersList() {
               href={`/orders/${order.orderId}`}
               className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-50 text-sm font-medium text-zinc-700 hover:bg-zinc-100 hover:text-zinc-900 transition-colors mt-auto"
             >
-              View Details
+              Ver Detalhes
               <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
