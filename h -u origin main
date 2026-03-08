@@ -1,0 +1,78 @@
+[33mcommit 9528df22f859fc2a96a3902218b189a6eb9c8400[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Maiki <125501475+Maiki98@users.noreply.github.com>
+Date:   Sun Mar 8 14:43:03 2026 -0300
+
+    cleanup
+    
+    Removed sections on translation, evaluation criteria, support, and license.
+
+[33mcommit 00541d147a8e71e05474649e05ec2c24fba64d81[m
+Author: Maiki <125501475+Maiki98@users.noreply.github.com>
+Date:   Sun Mar 8 14:42:07 2026 -0300
+
+    z
+    
+    Removed database configuration comments from example file.
+
+[33mcommit 0df89feaeb781f4bc23081855e63e46fa31fb2e4[m
+Author: Maiki <maikisp1234@gmail.com>
+Date:   Sun Mar 8 14:31:10 2026 -0300
+
+    feat: Sistema de Gerenciamento
+
+[33mcommit 329703f7342cfc701cb417ea4022ccb8aaf87650[m[33m ([m[1;31mgitsafe-backup/main[m[33m)[m
+Author: MaikiOliveira <19396946-MaikiOliveira@users.noreply.replit.com>
+Date:   Sun Mar 8 17:26:25 2026 +0000
+
+    Add a comprehensive README file for the order management system
+    
+    Add a new README.md file detailing project features, tech stack, data model, and structure with Gujarati localization.
+    
+    Replit-Commit-Author: Agent
+    Replit-Commit-Session-Id: 27fdb79a-ff5c-4463-8084-5722a5d25005
+    Replit-Commit-Checkpoint-Type: full_checkpoint
+    Replit-Commit-Event-Id: ca52460a-81fd-4777-9733-50e42db783d8
+    Replit-Commit-Screenshot-Url: https://storage.googleapis.com/screenshot-production-us-central1/3bde1d64-116b-47a6-ba1b-c72b6a6ff04a/27fdb79a-ff5c-4463-8084-5722a5d25005/J96aPA3
+    Replit-Helium-Checkpoint-Created: true
+
+[33mcommit 673e2416444fbc1f6e1d2b8b4c6139b625bab3a2[m
+Author: MaikiOliveira <19396946-MaikiOliveira@users.noreply.replit.com>
+Date:   Sun Mar 8 13:20:12 2026 +0000
+
+    Translate the entire system to Brazilian Portuguese
+    
+    Translate all UI elements, error messages, comments, and API responses to Brazilian Portuguese, and create a README with publishing instructions.
+    
+    Replit-Commit-Author: Agent
+    Replit-Commit-Session-Id: 27fdb79a-ff5c-4463-8084-5722a5d25005
+    Replit-Commit-Checkpoint-Type: full_checkpoint
+    Replit-Commit-Event-Id: fe1f8ffc-d872-4a7f-995a-59f535f35898
+    Replit-Commit-Screenshot-Url: https://storage.googleapis.com/screenshot-production-us-central1/3bde1d64-116b-47a6-ba1b-c72b6a6ff04a/27fdb79a-ff5c-4463-8084-5722a5d25005/J96aPA3
+    Replit-Helium-Checkpoint-Created: true
+
+[33mcommit 99cfe9717e5282370970614d442aaa1acb640d5a[m
+Author: MaikiOliveira <19396946-MaikiOliveira@users.noreply.replit.com>
+Date:   Sun Mar 8 13:15:52 2026 +0000
+
+    Add a comprehensive order management system with a user interface
+    
+    Implement full CRUD operations for orders, including API endpoints, database integration with PostgreSQL, and a React frontend for managing orders.
+    
+    Replit-Commit-Author: Agent
+    Replit-Commit-Session-Id: 27fdb79a-ff5c-4463-8084-5722a5d25005
+    Replit-Commit-Checkpoint-Type: full_checkpoint
+    Replit-Commit-Event-Id: f31eeebd-ce5c-4fd9-87a2-528f6e7f3fdd
+    Replit-Commit-Screenshot-Url: https://storage.googleapis.com/screenshot-production-us-central1/3bde1d64-116b-47a6-ba1b-c72b6a6ff04a/27fdb79a-ff5c-4463-8084-5722a5d25005/J96aPA3
+    Replit-Helium-Checkpoint-Created: true
+
+[33mcommit 5b33f884f01e34ad7341944d04cfdc82d667ed8e[m
+Author: MaikiOliveira <19396946-MaikiOliveira@users.noreply.replit.com>
+Date:   Sun Mar 8 13:08:10 2026 +0000
+
+    Extracted stack files
+
+[33mcommit 9b47c6901a02f4aba2297b70e26387a9b962f5d7[m
+Author: MaikiOliveira <19396946-MaikiOliveira@users.noreply.replit.com>
+Date:   Sun Mar 8 13:07:54 2026 +0000
+
+    Initial commit

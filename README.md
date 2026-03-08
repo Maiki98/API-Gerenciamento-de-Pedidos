@@ -1,6 +1,5 @@
 # 📦 Sistema de Gerenciamento de Pedidos
 
-Um sistema completo de gerenciamento de pedidos (CRUD) desenvolvido com **Node.js**, **React** e **PostgreSQL**, totalmente traduzido para **Português PT-BR**.
 
 ![Node.js](https://img.shields.io/badge/Node.js-18%2B-green)
 ![React](https://img.shields.io/badge/React-18%2B-blue)
@@ -21,12 +20,10 @@ Um sistema completo de gerenciamento de pedidos (CRUD) desenvolvido com **Node.j
 
 ### 🎁 Extras
 - Dashboard moderno e responsivo
-- Interface completa em Português PT-BR
 - Validação de dados com Zod
 - TypeScript full-stack
 - Banco de dados pré-populado com exemplos
 - Tratamento robusto de erros
-- Mensagens de sucesso/erro em português
 
 ---
 
@@ -123,46 +120,7 @@ CREATE TABLE items (
 
 ---
 
-## 🚀 Como Começar
-
-### Pré-requisitos
-- **Node.js** 18 ou superior
-- **npm** ou **yarn**
-- **PostgreSQL** 13 ou superior
-- Conta no GitHub (para publicar)
-
-### 1️⃣ Clonar o Repositório
-```bash
-git clone https://github.com/seu-usuario/sistema-gerenciamento-pedidos.git
-cd sistema-gerenciamento-pedidos
-```
-
-### 2️⃣ Instalar Dependências
-```bash
-npm install
-```
-
-### 3️⃣ Configurar Variáveis de Ambiente
-```bash
-cp .env.example .env
-```
-
-Edite o arquivo `.env` com suas credenciais:
-```env
-DATABASE_URL="postgresql://usuario:senha@localhost:5432/pedidos"
-```
-
-### 4️⃣ Sincronizar Banco de Dados
-```bash
-npm run db:push
-```
-
-### 5️⃣ Iniciar o Servidor
-```bash
-npm run dev
-```
-
-A aplicação estará disponível em **`http://localhost:5000`**
+A aplicação está disponível em **`http://localhost:5000`**
 
 ---
 
@@ -463,13 +421,9 @@ Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalh
 
 ## 👨‍💻 Autor
 
-Desenvolvido com ❤️ em **Português PT-BR**
+Maiki aka lv0nihil
 
 ---
-
-## 📞 Suporte
-
-Se você tiver dúvidas ou encontrar problemas:
 
 1. Verifique o arquivo `.env` e certifique-se de que `DATABASE_URL` está configurado
 2. Confirme que PostgreSQL está rodando
@@ -483,11 +437,8 @@ Se você tiver dúvidas ou encontrar problemas:
 
 ### v1.0.0 (2024-03-08)
 - ✅ Sistema completo de CRUD de pedidos
-- ✅ Dashboard moderno em Português PT-BR
 - ✅ Validação robusta com Zod
 - ✅ TypeScript full-stack
 - ✅ PostgreSQL com dados de exemplo
 
 ---
-
-**Pronto para começar? Clone o repositório e execute `npm install && npm run dev`! 🚀**
